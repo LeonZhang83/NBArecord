@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -194,25 +195,33 @@
             this.dataShow.AllowUserToDeleteRows = false;
             this.dataShow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataShow.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataShow.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataShow.GridColor = System.Drawing.Color.Red;
-            this.dataShow.Location = new System.Drawing.Point(257, 24);
+            this.dataShow.Location = new System.Drawing.Point(257, 13);
             this.dataShow.Name = "dataShow";
             this.dataShow.RowHeadersVisible = false;
             this.dataShow.RowHeadersWidth = 25;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dataShow.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.dataShow.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataShow.RowTemplate.Height = 27;
-            this.dataShow.Size = new System.Drawing.Size(655, 279);
+            this.dataShow.Size = new System.Drawing.Size(655, 304);
             this.dataShow.TabIndex = 9;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label7.Location = new System.Drawing.Point(458, 331);
+            this.label7.Location = new System.Drawing.Point(263, 335);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 20);
             this.label7.TabIndex = 13;
@@ -221,7 +230,7 @@
             // searchName
             // 
             this.searchName.Font = new System.Drawing.Font("新細明體", 11F);
-            this.searchName.Location = new System.Drawing.Point(520, 327);
+            this.searchName.Location = new System.Drawing.Point(325, 331);
             this.searchName.Name = "searchName";
             this.searchName.Size = new System.Drawing.Size(100, 29);
             this.searchName.TabIndex = 7;
@@ -229,7 +238,7 @@
             // search
             // 
             this.search.Font = new System.Drawing.Font("新細明體", 13F);
-            this.search.Location = new System.Drawing.Point(630, 319);
+            this.search.Location = new System.Drawing.Point(435, 323);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(90, 42);
             this.search.TabIndex = 8;
@@ -240,7 +249,7 @@
             // allMatch
             // 
             this.allMatch.Font = new System.Drawing.Font("新細明體", 10F);
-            this.allMatch.Location = new System.Drawing.Point(822, 309);
+            this.allMatch.Location = new System.Drawing.Point(822, 326);
             this.allMatch.Name = "allMatch";
             this.allMatch.Size = new System.Drawing.Size(90, 34);
             this.allMatch.TabIndex = 14;
@@ -252,7 +261,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label9.Location = new System.Drawing.Point(88, 409);
+            this.label9.Location = new System.Drawing.Point(42, 440);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(159, 20);
             this.label9.TabIndex = 16;
@@ -262,7 +271,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label10.Location = new System.Drawing.Point(87, 449);
+            this.label10.Location = new System.Drawing.Point(41, 485);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(159, 20);
             this.label10.TabIndex = 17;
@@ -271,7 +280,7 @@
             // homePointAVG
             // 
             this.homePointAVG.Font = new System.Drawing.Font("新細明體", 11F);
-            this.homePointAVG.Location = new System.Drawing.Point(257, 405);
+            this.homePointAVG.Location = new System.Drawing.Point(211, 436);
             this.homePointAVG.Name = "homePointAVG";
             this.homePointAVG.ReadOnly = true;
             this.homePointAVG.Size = new System.Drawing.Size(72, 29);
@@ -280,7 +289,7 @@
             // awayPointAVG
             // 
             this.awayPointAVG.Font = new System.Drawing.Font("新細明體", 11F);
-            this.awayPointAVG.Location = new System.Drawing.Point(257, 445);
+            this.awayPointAVG.Location = new System.Drawing.Point(211, 481);
             this.awayPointAVG.Name = "awayPointAVG";
             this.awayPointAVG.ReadOnly = true;
             this.awayPointAVG.Size = new System.Drawing.Size(72, 29);
@@ -289,7 +298,7 @@
             // homeLoseAVG
             // 
             this.homeLoseAVG.Font = new System.Drawing.Font("新細明體", 11F);
-            this.homeLoseAVG.Location = new System.Drawing.Point(351, 405);
+            this.homeLoseAVG.Location = new System.Drawing.Point(305, 436);
             this.homeLoseAVG.Name = "homeLoseAVG";
             this.homeLoseAVG.ReadOnly = true;
             this.homeLoseAVG.Size = new System.Drawing.Size(72, 29);
@@ -298,7 +307,7 @@
             // awayLoseAVG
             // 
             this.awayLoseAVG.Font = new System.Drawing.Font("新細明體", 11F);
-            this.awayLoseAVG.Location = new System.Drawing.Point(351, 445);
+            this.awayLoseAVG.Location = new System.Drawing.Point(305, 481);
             this.awayLoseAVG.Name = "awayLoseAVG";
             this.awayLoseAVG.ReadOnly = true;
             this.awayLoseAVG.Size = new System.Drawing.Size(72, 29);
@@ -308,7 +317,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label11.Location = new System.Drawing.Point(334, 410);
+            this.label11.Location = new System.Drawing.Point(288, 441);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(14, 20);
             this.label11.TabIndex = 23;
@@ -318,7 +327,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label12.Location = new System.Drawing.Point(334, 450);
+            this.label12.Location = new System.Drawing.Point(288, 486);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(14, 20);
             this.label12.TabIndex = 24;
@@ -327,7 +336,7 @@
             // gameWin
             // 
             this.gameWin.Font = new System.Drawing.Font("新細明體", 11F);
-            this.gameWin.Location = new System.Drawing.Point(257, 366);
+            this.gameWin.Location = new System.Drawing.Point(211, 391);
             this.gameWin.Name = "gameWin";
             this.gameWin.ReadOnly = true;
             this.gameWin.Size = new System.Drawing.Size(72, 29);
@@ -337,7 +346,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label8.Location = new System.Drawing.Point(192, 371);
+            this.label8.Location = new System.Drawing.Point(146, 396);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(59, 20);
             this.label8.TabIndex = 26;
@@ -346,7 +355,7 @@
             // gameLose
             // 
             this.gameLose.Font = new System.Drawing.Font("新細明體", 11F);
-            this.gameLose.Location = new System.Drawing.Point(351, 366);
+            this.gameLose.Location = new System.Drawing.Point(305, 391);
             this.gameLose.Name = "gameLose";
             this.gameLose.ReadOnly = true;
             this.gameLose.Size = new System.Drawing.Size(72, 29);
@@ -356,7 +365,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label13.Location = new System.Drawing.Point(334, 371);
+            this.label13.Location = new System.Drawing.Point(288, 396);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(14, 20);
             this.label13.TabIndex = 28;
@@ -366,7 +375,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label14.Location = new System.Drawing.Point(434, 371);
+            this.label14.Location = new System.Drawing.Point(388, 396);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(59, 20);
             this.label14.TabIndex = 29;
@@ -376,7 +385,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label15.Location = new System.Drawing.Point(576, 371);
+            this.label15.Location = new System.Drawing.Point(530, 396);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(14, 20);
             this.label15.TabIndex = 32;
@@ -385,7 +394,7 @@
             // homeLose
             // 
             this.homeLose.Font = new System.Drawing.Font("新細明體", 11F);
-            this.homeLose.Location = new System.Drawing.Point(593, 366);
+            this.homeLose.Location = new System.Drawing.Point(547, 391);
             this.homeLose.Name = "homeLose";
             this.homeLose.ReadOnly = true;
             this.homeLose.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -395,7 +404,7 @@
             // homeWin
             // 
             this.homeWin.Font = new System.Drawing.Font("新細明體", 11F);
-            this.homeWin.Location = new System.Drawing.Point(499, 366);
+            this.homeWin.Location = new System.Drawing.Point(453, 391);
             this.homeWin.Name = "homeWin";
             this.homeWin.ReadOnly = true;
             this.homeWin.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -406,7 +415,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label16.Location = new System.Drawing.Point(822, 371);
+            this.label16.Location = new System.Drawing.Point(776, 396);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(14, 20);
             this.label16.TabIndex = 36;
@@ -415,7 +424,7 @@
             // awayLose
             // 
             this.awayLose.Font = new System.Drawing.Font("新細明體", 11F);
-            this.awayLose.Location = new System.Drawing.Point(839, 366);
+            this.awayLose.Location = new System.Drawing.Point(793, 391);
             this.awayLose.Name = "awayLose";
             this.awayLose.ReadOnly = true;
             this.awayLose.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -425,7 +434,7 @@
             // awayWin
             // 
             this.awayWin.Font = new System.Drawing.Font("新細明體", 11F);
-            this.awayWin.Location = new System.Drawing.Point(745, 366);
+            this.awayWin.Location = new System.Drawing.Point(699, 391);
             this.awayWin.Name = "awayWin";
             this.awayWin.ReadOnly = true;
             this.awayWin.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -436,7 +445,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label17.Location = new System.Drawing.Point(680, 371);
+            this.label17.Location = new System.Drawing.Point(634, 396);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(59, 20);
             this.label17.TabIndex = 33;
@@ -445,7 +454,7 @@
             // homeBig
             // 
             this.homeBig.Font = new System.Drawing.Font("新細明體", 11F);
-            this.homeBig.Location = new System.Drawing.Point(520, 405);
+            this.homeBig.Location = new System.Drawing.Point(474, 436);
             this.homeBig.Name = "homeBig";
             this.homeBig.ReadOnly = true;
             this.homeBig.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -456,7 +465,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label18.Location = new System.Drawing.Point(434, 410);
+            this.label18.Location = new System.Drawing.Point(388, 441);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(77, 20);
             this.label18.TabIndex = 37;
@@ -465,7 +474,7 @@
             // awayBig
             // 
             this.awayBig.Font = new System.Drawing.Font("新細明體", 11F);
-            this.awayBig.Location = new System.Drawing.Point(764, 405);
+            this.awayBig.Location = new System.Drawing.Point(718, 436);
             this.awayBig.Name = "awayBig";
             this.awayBig.ReadOnly = true;
             this.awayBig.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -476,7 +485,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("新細明體", 12F);
-            this.label19.Location = new System.Drawing.Point(681, 409);
+            this.label19.Location = new System.Drawing.Point(635, 440);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(77, 20);
             this.label19.TabIndex = 39;
@@ -485,7 +494,7 @@
             // homeBigChance
             // 
             this.homeBigChance.Font = new System.Drawing.Font("新細明體", 11F);
-            this.homeBigChance.Location = new System.Drawing.Point(577, 405);
+            this.homeBigChance.Location = new System.Drawing.Point(531, 436);
             this.homeBigChance.MaxLength = 5;
             this.homeBigChance.Name = "homeBigChance";
             this.homeBigChance.ReadOnly = true;
@@ -496,7 +505,7 @@
             // awayBigChance
             // 
             this.awayBigChance.Font = new System.Drawing.Font("新細明體", 11F);
-            this.awayBigChance.Location = new System.Drawing.Point(823, 405);
+            this.awayBigChance.Location = new System.Drawing.Point(777, 436);
             this.awayBigChance.MaxLength = 5;
             this.awayBigChance.Name = "awayBigChance";
             this.awayBigChance.ReadOnly = true;
@@ -508,7 +517,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 511);
+            this.ClientSize = new System.Drawing.Size(924, 538);
             this.Controls.Add(this.awayBigChance);
             this.Controls.Add(this.homeBigChance);
             this.Controls.Add(this.awayBig);
@@ -553,6 +562,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(942, 585);
+            this.MinimumSize = new System.Drawing.Size(942, 585);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "My NBA Record";

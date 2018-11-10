@@ -62,7 +62,7 @@ namespace MyNBArecord
 
         public void searchMethod(string name)
         {
-            string sqlSearch = "select matchdate as 對戰日, away as 客隊,awaypoint as 客隊得分,home as 主隊,homepoint as 主隊得分 " +
+            string sqlSearch = "select DATE_FORMAT(matchdate,\'%m-%d\') as 對戰日, away as 客隊,awaypoint as 客隊得分,home as 主隊,homepoint as 主隊得分 " +
             "from nbarecord.matchrecord where away = \"" +name + "\" or home =\"" + name + "\" order by matchdate desc;";
             //建立查詢 傳入查詢語句及SQL連線
             sqlcomm = new MySqlCommand(sqlSearch, sqlconn);
