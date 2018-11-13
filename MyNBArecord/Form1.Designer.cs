@@ -74,6 +74,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.homeBigChance = new System.Windows.Forms.TextBox();
             this.awayBigChance = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.avgTotalPoint = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataShow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,10 +212,12 @@
             this.dataShow.RowHeadersVisible = false;
             this.dataShow.RowHeadersWidth = 25;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             this.dataShow.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataShow.RowTemplate.Height = 27;
+            this.dataShow.RowTemplate.ReadOnly = true;
             this.dataShow.Size = new System.Drawing.Size(655, 304);
             this.dataShow.TabIndex = 9;
             // 
@@ -513,11 +517,34 @@
             this.awayBigChance.Size = new System.Drawing.Size(88, 29);
             this.awayBigChance.TabIndex = 42;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("新細明體", 12F);
+            this.label20.Location = new System.Drawing.Point(388, 485);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(99, 20);
+            this.label20.TabIndex = 43;
+            this.label20.Text = "平均總分 :";
+            // 
+            // avgTotalPoint
+            // 
+            this.avgTotalPoint.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.avgTotalPoint.Font = new System.Drawing.Font("新細明體", 11F);
+            this.avgTotalPoint.Location = new System.Drawing.Point(493, 481);
+            this.avgTotalPoint.Name = "avgTotalPoint";
+            this.avgTotalPoint.ReadOnly = true;
+            this.avgTotalPoint.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.avgTotalPoint.Size = new System.Drawing.Size(67, 29);
+            this.avgTotalPoint.TabIndex = 44;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 538);
+            this.Controls.Add(this.avgTotalPoint);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.awayBigChance);
             this.Controls.Add(this.homeBigChance);
             this.Controls.Add(this.awayBig);
@@ -618,6 +645,8 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox homeBigChance;
         private System.Windows.Forms.TextBox awayBigChance;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox avgTotalPoint;
     }
 }
 

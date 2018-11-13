@@ -25,7 +25,7 @@ namespace MyNBArecord
         //回傳表格
         DataTable dt;
 
-        int totelGame, awayGameWin, homeGameWin, awayGameLose, homeGameLose, awayHigh, homeHigh;
+        int totelGame, awayGameWin, homeGameWin, awayGameLose, homeGameLose, awayHigh, homeHigh,avgPoint;
 
         public MainForm()
         {
@@ -74,6 +74,7 @@ namespace MyNBArecord
             sqlAdapter.Fill(dt);
             //DataGridView 顯示表格
             dataShow.DataSource = dt;
+            //dateGridViewChangeColor();
 
             homePointAVG.Text = homePointAvgMethod(name);
             homeLoseAVG.Text = homeLoseAvgMethod(name);
@@ -182,6 +183,7 @@ namespace MyNBArecord
             dt = new DataTable();
             sqlAdapter.Fill(dt);
             dataShow.DataSource = dt;
+            //dateGridViewChangeColor();
             clearAVG();
         }
 
@@ -210,6 +212,7 @@ namespace MyNBArecord
             homeBigChance.Text = "";
             awayBig.Text = "";
             awayBigChance.Text = "";
+            avgTotalPoint.Text = "";
         }
 
         public void bigPointMethod(string name)
@@ -233,11 +236,32 @@ namespace MyNBArecord
             homeBig.Text = homeHigh.ToString();
             homeBigChance.Text = (((float)homeHigh / (float)(homeGameWin + homeGameLose))*100).ToString("f2") + "%";
 
+            string sqlSearch2 = "select avg(awaypoint+homepoint) from nbarecord.matchrecord where home = \"" + name + "\" or away = \"" + name + "\"";
+            sqlcomm = new MySqlCommand(sqlSearch2, sqlconn);
+            sqlAdapter = new MySqlDataAdapter(sqlcomm);
+            sqlconn.Open();
+            avgPoint = Convert.ToInt32(sqlcomm.ExecuteScalar());
+            sqlconn.Close();
+            avgTotalPoint.Text = avgPoint.ToString("f2");
+
         }
 
         private void allMatch_Click(object sender, EventArgs e)
         {
             listAll();
         }
-    }
+
+ /*       public void dateGridViewChangeColor() {
+            for (int i = dataShow.RowCount-2; i >=0 ; i--) {
+                if (Convert.ToInt16(dataShow.Rows[i].Cells[2].Value) > Convert.ToInt16(dataShow.Rows[i].Cells[4].Value) )
+                {
+                    this.dataShow.Rows[i].Cells[2].Style.BackColor=Color.Red;
+                }
+                else
+                {
+                    this.dataShow.Rows[i].Cells[4].Style.BackColor = Color.Red;
+                }
+            }
+        }
+*/    }
 }
