@@ -24,6 +24,9 @@ namespace MyNBArecord
         MySqlDataAdapter sqlAdapter;
         //回傳表格
         DataTable dt;
+        //隊名LIST
+        String[] teamName = {"暴龍", "公鹿", "溜馬", "塞爾提克", "76人", "活塞", "黃蜂", "魔術", "籃網", "熱火", "巫師", "公牛", "尼克", "老鷹", "騎士",
+            "勇士", "金塊", "拓荒者", "灰熊", "快艇", "雷霆", "湖人", "鵜鶘", "國王", "馬刺", "火箭", "爵士", "灰狼", "獨行俠", "太陽"};
 
         int totelGame, awayGameWin, homeGameWin, awayGameLose, homeGameLose, awayHigh, homeHigh,avgPoint;
 
@@ -37,22 +40,40 @@ namespace MyNBArecord
 
         private void addRecord_Click(object sender, EventArgs e)
         {
-            string sqladd = "insert into nbarecord.matchrecord(matchdate,away,awaypoint,home,homepoint) values (date('" + matchDate.Text + "'),\"" + awayName.Text + "\"," + awayPoint.Text + ",\"" + homeName.Text + "\"," + homePoint.Text + ")";
-            //建立 新增語法
-            sqlcomm = sqlconn.CreateCommand();
-            //傳入SQL新增語句
-            sqlcomm.CommandText = sqladd;
-            //開啟SQL
-            sqlconn.Open();
-            //執行語法
-            sqlcomm.ExecuteNonQuery();
-            //關閉SQL
-            sqlconn.Close();
-            //清除新增輸入框
-            clearInput();
-            awayName.Focus();
-
-            listAll();
+            string sqlHomeName = "", sqlAwayName = "";
+            for (int i = 0;i<teamName.Length;i++) {
+                if (awayName.Text.Equals(teamName[i]))
+                {
+                    sqlAwayName = awayName.Text;
+                }
+                else if (homeName.Text.Equals(teamName[i]))
+                {
+                    sqlHomeName = homeName.Text;
+                }
+            }
+            if (sqlHomeName.Equals("") || sqlAwayName.Equals(""))
+            {
+                MessageBox.Show("輸入隊伍名稱錯誤!!!!.....");
+                clearInput();
+            }
+            else
+            {
+                string sqladd = "insert into nbarecord.matchrecord(matchdate,away,awaypoint,home,homepoint) values (date('" + matchDate.Text + "'),\"" + sqlAwayName + "\"," + awayPoint.Text + ",\"" + sqlHomeName + "\"," + homePoint.Text + ")";
+                //建立 新增語法
+                sqlcomm = sqlconn.CreateCommand();
+                //傳入SQL新增語句
+                sqlcomm.CommandText = sqladd;
+                //開啟SQL
+                sqlconn.Open();
+                //執行語法
+                sqlcomm.ExecuteNonQuery();
+                //關閉SQL
+                sqlconn.Close();
+                //清除新增輸入框
+                clearInput();
+                awayName.Focus();
+                listAll();
+            }
         }
 
         private void search_Click(object sender, EventArgs e)
