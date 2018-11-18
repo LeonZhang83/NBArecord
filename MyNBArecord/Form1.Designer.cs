@@ -76,6 +76,8 @@
             this.awayBigChance = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.avgTotalPoint = new System.Windows.Forms.TextBox();
+            this.tenRecord = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataShow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -538,11 +540,35 @@
             this.avgTotalPoint.Size = new System.Drawing.Size(67, 29);
             this.avgTotalPoint.TabIndex = 44;
             // 
+            // tenRecord
+            // 
+            this.tenRecord.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tenRecord.Font = new System.Drawing.Font("新細明體", 11F);
+            this.tenRecord.Location = new System.Drawing.Point(691, 466);
+            this.tenRecord.Name = "tenRecord";
+            this.tenRecord.ReadOnly = true;
+            this.tenRecord.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tenRecord.Size = new System.Drawing.Size(216, 29);
+            this.tenRecord.TabIndex = 46;
+            this.tenRecord.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("新細明體", 12F);
+            this.label21.Location = new System.Drawing.Point(608, 470);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(77, 20);
+            this.label21.TabIndex = 45;
+            this.label21.Text = "近10場 :";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 513);
+            this.Controls.Add(this.tenRecord);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.avgTotalPoint);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.awayBigChance);
@@ -647,6 +673,8 @@
         private System.Windows.Forms.TextBox awayBigChance;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox avgTotalPoint;
+        private System.Windows.Forms.TextBox tenRecord;
+        private System.Windows.Forms.Label label21;
     }
 }
 

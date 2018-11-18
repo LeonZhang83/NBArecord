@@ -27,7 +27,8 @@ namespace MyNBArecord
         //隊名LIST
         String[] teamName = {"暴龍", "公鹿", "溜馬", "塞爾提克", "76人", "活塞", "黃蜂", "魔術", "籃網", "熱火", "巫師", "公牛", "尼克", "老鷹", "騎士",
             "勇士", "金塊", "拓荒者", "灰熊", "快艇", "雷霆", "湖人", "鵜鶘", "國王", "馬刺", "火箭", "爵士", "灰狼", "獨行俠", "太陽"};
-
+        //日期比對
+        DateTime dateTime;
         int totelGame, awayGameWin, homeGameWin, awayGameLose, homeGameLose, awayHigh, homeHigh,avgPoint;
 
         public MainForm()
@@ -51,9 +52,10 @@ namespace MyNBArecord
                     sqlHomeName = homeName.Text;
                 }
             }
-            if (sqlHomeName.Equals("") || sqlAwayName.Equals(""))
+            bool dateCheck = DateTime.TryParse(matchDate.Text,out dateTime);
+            if (sqlHomeName.Equals("") || sqlAwayName.Equals("") || dateCheck == false)
             {
-                MessageBox.Show("輸入隊伍名稱錯誤!!!!.....");
+                MessageBox.Show("日期格式或隊伍名稱輸入錯誤!!!!.....");
                 clearInput();
             }
             else
@@ -78,7 +80,15 @@ namespace MyNBArecord
 
         private void search_Click(object sender, EventArgs e)
         {
-            searchMethod(searchName.Text);
+            String sqlName = "";
+            for (int i = 0; i < teamName.Length; i++)
+            {
+                if (searchName.Text.Equals(teamName[i]))
+                {
+                    sqlName = searchName.Text;
+                }
+            }
+            if (!sqlName.Equals("")) { searchMethod(sqlName); }
         }
 
         public void searchMethod(string name)
@@ -95,7 +105,10 @@ namespace MyNBArecord
             sqlAdapter.Fill(dt);
             //DataGridView 顯示表格
             dataShow.DataSource = dt;
-            //dateGridViewChangeColor();
+            DataSet ds = new DataSet();
+            sqlAdapter.Fill(ds);
+
+
 
             homePointAVG.Text = homePointAvgMethod(name);
             homeLoseAVG.Text = homeLoseAvgMethod(name);
@@ -103,6 +116,7 @@ namespace MyNBArecord
             awayLoseAVG.Text = awayLoseAvgMethod(name);
             win(name);
             bigPointMethod(name);
+            getTenRecord(ds,name);
         }
 
         public void win(string name)
@@ -234,6 +248,7 @@ namespace MyNBArecord
             awayBig.Text = "";
             awayBigChance.Text = "";
             avgTotalPoint.Text = "";
+            tenRecord.Text = "";
         }
 
         public void bigPointMethod(string name)
@@ -272,17 +287,34 @@ namespace MyNBArecord
             listAll();
         }
 
- /*       public void dateGridViewChangeColor() {
-            for (int i = dataShow.RowCount-2; i >=0 ; i--) {
-                if (Convert.ToInt16(dataShow.Rows[i].Cells[2].Value) > Convert.ToInt16(dataShow.Rows[i].Cells[4].Value) )
+        public void getTenRecord(DataSet ds,String name) {
+            String record = "";
+            for (int i =0; i<10; i++)
+            {
+                if (ds.Tables[0].Rows[i][1].ToString().Equals(name))
                 {
-                    this.dataShow.Rows[i].Cells[2].Style.BackColor=Color.Red;
+                    if (Convert.ToInt16(ds.Tables[0].Rows[i][2]) > Convert.ToInt16(ds.Tables[0].Rows[i][4]))
+                    {
+                        record += "W ";
+                    }
+                    else
+                    {
+                        record += "L ";
+                    }
                 }
                 else
                 {
-                    this.dataShow.Rows[i].Cells[4].Style.BackColor = Color.Red;
+                    if (Convert.ToInt16(ds.Tables[0].Rows[i][2]) > Convert.ToInt16(ds.Tables[0].Rows[i][4]))
+                    {
+                        record += "L ";
+                    }
+                    else
+                    {
+                        record += "W ";
+                    }
                 }
             }
+            tenRecord.Text = record;
         }
-*/    }
+    }
 }
