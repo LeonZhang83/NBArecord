@@ -55,7 +55,7 @@ namespace MyNBArecord
             bool dateCheck = DateTime.TryParse(matchDate.Text,out dateTime);
             if (sqlHomeName.Equals("") || sqlAwayName.Equals("") || dateCheck == false)
             {
-                MessageBox.Show("日期格式或隊伍名稱輸入錯誤!!!!.....");
+                MessageBox.Show("日期格式或隊伍名稱輸入錯誤!!!!.....","錯誤提示!!!");
                 clearInput();
             }
             else
@@ -93,7 +93,7 @@ namespace MyNBArecord
 
         public void searchMethod(string name)
         {
-            string sqlSearch = "select DATE_FORMAT(matchdate,\'%m-%d\') as 對戰日, away as 客隊,awaypoint as 客隊得分,home as 主隊,homepoint as 主隊得分 " +
+            string sqlSearch = "select DATE_FORMAT(matchdate,\'%y-%m-%d\') as 對戰日, away as 客隊,awaypoint as 客隊得分,home as 主隊,homepoint as 主隊得分 " +
             "from nbarecord.matchrecord where away = \"" +name + "\" or home =\"" + name + "\" order by matchdate desc;";
             //建立查詢 傳入查詢語句及SQL連線
             sqlcomm = new MySqlCommand(sqlSearch, sqlconn);
@@ -108,8 +108,6 @@ namespace MyNBArecord
             DataSet ds = new DataSet();
             sqlAdapter.Fill(ds);
 
-
-
             homePointAVG.Text = homePointAvgMethod(name);
             homeLoseAVG.Text = homeLoseAvgMethod(name);
             awayPointAVG.Text = awayPointAvgMethod(name);
@@ -117,6 +115,7 @@ namespace MyNBArecord
             win(name);
             bigPointMethod(name);
             getTenRecord(ds,name);
+            changeDataColor(dataShow,name);
         }
 
         public void win(string name)
@@ -211,7 +210,7 @@ namespace MyNBArecord
         public void listAll()
         {
             // DATE_FORMAT( 日期 , 返回(月份-日期) )
-            string sqlSearch = "select DATE_FORMAT(matchdate,\'%m-%d\') as 對戰日, away as 客隊,awaypoint as 客隊得分,home as 主隊,homepoint as 主隊得分 " +
+            string sqlSearch = "select DATE_FORMAT(matchdate,\'%y-%m-%d\') as 對戰日, away as 客隊,awaypoint as 客隊得分,home as 主隊,homepoint as 主隊得分 " +
             "from nbarecord.matchrecord order by matchdate desc";
             sqlcomm = new MySqlCommand(sqlSearch, sqlconn);
             sqlAdapter = new MySqlDataAdapter(sqlcomm);
@@ -315,6 +314,24 @@ namespace MyNBArecord
                 }
             }
             tenRecord.Text = record;
+        }
+
+        public void changeDataColor(DataGridView dataGridView,string name) {
+            
+            for (int i =0;i<dataGridView.RowCount-1;i++)
+            {
+                String away = dataGridView.Rows[i].Cells[1].Value.ToString();
+                String home = dataGridView.Rows[i].Cells[3].Value.ToString();
+                if (away.Equals(name))
+                {
+                    dataGridView.Rows[i].Cells[1].Style.BackColor = Color.SteelBlue;
+                }
+                else if (home.Equals(name))
+                {
+                    dataGridView.Rows[i].Cells[3].Style.BackColor = Color.SteelBlue;
+                }   
+            }
+            dataGridView.Refresh();
         }
     }
 }
