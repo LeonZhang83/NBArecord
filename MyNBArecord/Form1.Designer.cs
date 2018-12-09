@@ -78,6 +78,8 @@
             this.label21 = new System.Windows.Forms.Label();
             this.homePoint = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gameToday = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataShow)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -138,8 +140,9 @@
             this.matchDate.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.matchDate.Location = new System.Drawing.Point(68, 9);
             this.matchDate.Name = "matchDate";
-            this.matchDate.Size = new System.Drawing.Size(100, 30);
+            this.matchDate.Size = new System.Drawing.Size(162, 30);
             this.matchDate.TabIndex = 1;
+            this.matchDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // awayName
             // 
@@ -577,11 +580,34 @@
             this.panel1.Size = new System.Drawing.Size(241, 209);
             this.panel1.TabIndex = 47;
             // 
+            // gameToday
+            // 
+            this.gameToday.Font = new System.Drawing.Font("新細明體", 12F);
+            this.gameToday.FormattingEnabled = true;
+            this.gameToday.ItemHeight = 20;
+            this.gameToday.Location = new System.Drawing.Point(839, 14);
+            this.gameToday.Name = "gameToday";
+            this.gameToday.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.gameToday.Size = new System.Drawing.Size(248, 384);
+            this.gameToday.TabIndex = 48;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(877, 404);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(176, 47);
+            this.button1.TabIndex = 49;
+            this.button1.Text = "重新整理";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 468);
+            this.ClientSize = new System.Drawing.Size(1099, 468);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.gameToday);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tenRecord);
             this.Controls.Add(this.label21);
@@ -619,11 +645,11 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dataShow);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(860, 515);
             this.MinimumSize = new System.Drawing.Size(860, 515);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "My NBA Record";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataShow)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -680,6 +706,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox homePoint;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ListBox gameToday;
+        private System.Windows.Forms.Button button1;
     }
 }
 
