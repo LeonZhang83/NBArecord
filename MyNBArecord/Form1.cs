@@ -32,16 +32,15 @@ namespace MyNBArecord
         //日期比對
         DateTime dateTime;
         int totelGame, awayGameWin, homeGameWin, awayGameLose, homeGameLose, awayHigh, homeHigh, avgPoint;
+        int gameCnt = 0;
         string finalResult = "";
         string result = "";
-        string[] awayNameList = new string[20], homeNameList = new string[20], stutes = new string[20],
-            awayPointList = new string[20], homePointList = new string[20], awayQpoint = new string[20], homeQpoint = new string[20];
+        public List<GameRecord> gameRecords = new List<GameRecord>();
+        bool todayOff = false;
 
         public MainForm()
         {
             InitializeComponent();
-            //查詢所有紀錄
-            listAll();
             //建立網頁連結
             WebRequest request = WebRequest.Create(@"https://www.playsport.cc/livescore.php?aid=3");
             WebResponse response;
@@ -62,9 +61,47 @@ namespace MyNBArecord
             finalResult = changeENGtoCH(finalResult);
             //放入ListBox
             putInList(finalResult);
-
+            for(int i = 0; i < gameCnt; i++)
+            {
+                if (gameRecords[i].Status.Equals("比賽結束 "))
+                {
+                    todayOff = true;    
+                }
+                else
+                {
+                    todayOff = false;
+                    break;
+                }
+            }
+            if (todayOff)
+            {
+                for(int i = 0; i < gameCnt; i++)
+                {
+                    AutoAdd(gameRecords[i]);
+                }
+            }
+            //查詢所有紀錄
+            listAll();
         }
 
+        public void AutoAdd(GameRecord gameRecord)
+        {
+            string sqladd = "insert into nbarecord.matchrecord(matchdate,away,awaypoint,home,homepoint) " +
+                "values (date('" + DateTime.Now.ToString("yyyy-MM-dd") + "'),\"" + gameRecord.AwayName + "\"," + gameRecord.AwayScore + ",\"" 
+                + gameRecord.HomeName + "\"," + gameRecord.HomeScore + ")";
+            //建立 新增語法
+            sqlcomm = sqlconn.CreateCommand();
+            //傳入SQL新增語句
+            sqlcomm.CommandText = sqladd;
+            //開啟SQL
+            sqlconn.Open();
+            //執行語法
+            sqlcomm.ExecuteNonQuery();
+            //關閉SQL
+            sqlconn.Close();
+            listAll();
+        }
+        
         private void addRecord_Click(object sender, EventArgs e)
         {
             string sqlHomeName = "", sqlAwayName = "";
@@ -545,43 +582,44 @@ namespace MyNBArecord
             string listName = final;
             gameToday.Items.Clear();
             int div1 = 0, div2 = 0;
-            int gameCnt = 0;
             while (div1 != -1)
             {
                 div1 = final.IndexOf("(客)對(主)");
                 if (div1 == -1) { break; }
-                awayNameList[gameCnt] = final.Substring(0, div1);
+                string awayName = final.Substring(0, div1);
                 final = final.Remove(0, div1 + 7);
 
                 div2 = final.IndexOf("\n");
-                homeNameList[gameCnt] = final.Substring(0, div2);
+                string homeName = final.Substring(0, div2);
                 final = final.Remove(0, div2 + 1);
 
                 div2 = final.IndexOf(" : ");
-                awayPointList[gameCnt] = final.Substring(0, div2);
+                string awayPoint = final.Substring(0, div2);
                 final = final.Remove(0, div2 + 3);
 
                 div2 = final.IndexOf("\n");
-                homePointList[gameCnt] = final.Substring(0, div2);
+                string homePoint = final.Substring(0, div2);
                 final = final.Remove(0, div2 + 1);
 
                 div2 = final.IndexOf("\n");
-                stutes[gameCnt] = final.Substring(0, div2).Replace("/span>", "");
+                string stutes = final.Substring(0, div2).Replace("/span>", "");
                 final = final.Remove(0, div2 + 1);
 
                 div2 = final.IndexOf("\n");
-                awayQpoint[gameCnt] = final.Substring(0, div2).Replace("/", " ");
+                string awayQpoint = final.Substring(0, div2).Replace("/", " ");
                 final = final.Remove(0, div2 + 1);
 
                 div2 = final.IndexOf("\n");
-                homeQpoint[gameCnt] = final.Substring(0, div2).Replace("/", " ");
+                string homeQpoint = final.Substring(0, div2).Replace("/", " ");
                 final = final.Remove(0, div2 + 1);
 
-                gameToday.Items.Add(stutes[gameCnt]);
-                gameToday.Items.Add("(客) " + awayNameList[gameCnt] + " : " + homeNameList[gameCnt] + " (主)");
-                gameToday.Items.Add("(客) " + awayPointList[gameCnt] + " : " + homePointList[gameCnt] + " (主)");
-                gameToday.Items.Add("(客)" + awayQpoint[gameCnt]);
-                gameToday.Items.Add("(主)" + homeQpoint[gameCnt]);
+                gameRecords.Add(new GameRecord(awayName, homeName, stutes, awayPoint, homePoint, awayQpoint, homeQpoint));
+
+                gameToday.Items.Add(gameRecords[gameCnt].Status);
+                gameToday.Items.Add("(客) " + gameRecords[gameCnt].AwayName + " : " + gameRecords[gameCnt].HomeName + " (主)");
+                gameToday.Items.Add("(客) " + gameRecords[gameCnt].AwayScore + " : " + gameRecords[gameCnt].HomeScore + " (主)");
+                gameToday.Items.Add("(客)" + gameRecords[gameCnt].AwayQpoint);
+                gameToday.Items.Add("(主)" + gameRecords[gameCnt].HomeQpoint);
                 gameToday.Items.Add(" ");
                 gameCnt++;
             }
