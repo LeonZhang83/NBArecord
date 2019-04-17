@@ -93,6 +93,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -108,7 +109,38 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="image\ATL.PNG" />
+    <Content Include="image\BKN.PNG" />
+    <Content Include="image\BOS.PNG" />
+    <Content Include="image\CHA.PNG" />
+    <Content Include="image\CHI.PNG" />
+    <Content Include="image\CLE.PNG" />
+    <Content Include="image\DAL.PNG" />
+    <Content Include="image\DEN.PNG" />
+    <Content Include="image\DET.PNG" />
+    <Content Include="image\GS.PNG" />
+    <Content Include="image\HOU.PNG" />
+    <Content Include="image\IND.PNG" />
+    <Content Include="image\LAC.PNG" />
+    <Content Include="image\LAL.PNG" />
+    <Content Include="image\MEM.PNG" />
+    <Content Include="image\MIA.PNG" />
+    <Content Include="image\MIL.PNG" />
+    <Content Include="image\MIN.PNG" />
+    <Content Include="image\NO.PNG" />
+    <Content Include="image\NY.PNG" />
+    <Content Include="image\OKC.PNG" />
+    <Content Include="image\ORL.PNG" />
+    <Content Include="image\PHI.PNG" />
+    <Content Include="image\PHO.PNG" />
+    <Content Include="image\POR.PNG" />
+    <Content Include="image\SA.PNG" />
+    <Content Include="image\SAC.PNG" />
+    <Content Include="image\TOR.PNG" />
+    <Content Include="image\UTA.PNG" />
+    <Content Include="image\WAS.PNG" />
     <Content Include="logo.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
